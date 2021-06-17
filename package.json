@@ -1,0 +1,10 @@
+{
+  "name": "ZoomTabCloser",
+  "version": "1.0.0",
+  "description": "Chrome extension to automatically close google chrome tabs used to launch zoom.",
+  "main": "index.js",
+  "repository": "git@github.com:HiromuKinoshita/ZoomTabCloser.git",
+  "author": "HiromuKinoshita <uw.p.21k@gmail.com>",
+  "license": "none",
+  "private": true
+}
