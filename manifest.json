@@ -1,0 +1,9 @@
+{
+  "name": "ZoomTabCloser",
+  "description": "Chrome extension to automatically close google chrome tabs used to launch zoom.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  }
+}
