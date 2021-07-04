@@ -1,3 +1,5 @@
+// must be put on root path.
+
 let color = '#3aa757';
 
 chrome.runtime.onInstalled.addListener(() => {
