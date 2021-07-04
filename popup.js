@@ -6,7 +6,7 @@
 //   changeColor.style.backgroundColor = color;
 // });
 
-removeZoomTabc.addEventListener("click", async () => {
+const removeZoomTabs = async () => {
   const tabs = await chrome.tabs.query({
     /**
      * Target should be inactive tabs.
@@ -20,10 +20,12 @@ removeZoomTabc.addEventListener("click", async () => {
       'https://*.zoom.us/postattendee*',
     ],
   });
-  tabs.forEach(tab => {
+  tabs.forEach(async tab => {
     chrome.tabs.remove(tab.id);
   });
-});
+}
+
+buttonRemove.addEventListener("click", removeZoomTabs());
 
 // TODO: delete them
 // The body of this function will be executed as a content script inside the
