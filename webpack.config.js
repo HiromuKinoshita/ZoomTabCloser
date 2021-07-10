@@ -18,6 +18,10 @@ module.exports = {
           }
         ],
       },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+      },
     ],
   },
   mode: 'production',
