@@ -1,4 +1,4 @@
-// must be put on root path.
+import { removeZoomTabs } from './remove';
 
 let color = '#3aa757';
 

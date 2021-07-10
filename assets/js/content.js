@@ -1,4 +1,4 @@
-import removeZoomTabs from './remove';
+import { removeZoomTabs } from './remove';
 
 // TODO: delete them
 // Initialize button with user's preferred color
