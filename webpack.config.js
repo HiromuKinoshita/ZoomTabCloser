@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { HtmlWebpackSkipAssetsPlugin } = require('html-webpack-skip-assets-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -34,12 +35,21 @@ module.exports = {
       skipAssets: ['background.js'],
     }),
     new HtmlWebpackPlugin({
-      filename: 'otions.html',
+      filename: 'options.html',
       template: "./html/options.html",
       skipAssets: ['background.js'],
     }),
     new HtmlWebpackSkipAssetsPlugin({
       skipAssets: ['background.js'],
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'manifest.json' },
+        { from: './assets/images', to: 'images' },
+      ],
+      options: {
+        concurrency: 100,
+      },
     }),
   ],
   mode: 'production',
