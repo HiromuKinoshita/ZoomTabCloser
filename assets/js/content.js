@@ -9,7 +9,7 @@ import { removeZoomTabs } from './remove';
 // });
 
 
-buttonRemove.addEventListener("click", removeZoomTabs());
+buttonRemove.addEventListener("click", removeZoomTabs);
 
 // TODO: delete them
 // The body of this function will be executed as a content script inside the

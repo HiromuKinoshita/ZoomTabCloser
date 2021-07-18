@@ -1,18 +1,15 @@
 export const removeZoomTabs = async () => {
+  const condition = new RegExp(/((https|http):\/\/.*zoom\.us\/.*#success|(https|http):\/\/.*zoom\.us\/postattendee.*)/);
   const tabs = await chrome.tabs.query({
-    /**
-     * Target should be inactive tabs.
-     * A user may want to reopen zoom app via browser if tab is active.
-     */
-    active: false,
     url: [
-      'https://zoom.us/*#success',
-      'https://*.zoom.us/*#success',
-      'https://zoom.us/postattendee*',
-      'https://*.zoom.us/postattendee*',
+      '*://zoom.us/*',
+      '*://*.zoom.us/*',
     ],
   });
-  tabs.forEach(async tab => {
+  const queriedTabs = tabs.filter(tab => {
+    return condition.test(tab.url);
+  });
+  queriedTabs.forEach(tab => {
     chrome.tabs.remove(tab.id);
   });
 }
