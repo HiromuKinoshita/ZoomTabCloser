@@ -32,12 +32,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'popup.html',
       template: "./html/popup.html",
-      skipAssets: ['background.js'],
     }),
     new HtmlWebpackPlugin({
       filename: 'options.html',
       template: "./html/options.html",
-      skipAssets: ['background.js'],
     }),
     new HtmlWebpackSkipAssetsPlugin({
       skipAssets: ['background.js'],
