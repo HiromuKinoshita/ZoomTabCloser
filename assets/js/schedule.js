@@ -17,5 +17,6 @@ export const getIntervalMinutes = () => intervalMinutes;
 export const firstEventUnixTime = () => {
   const currentTime = Date.now();
   const untillNextEventMinutes = getUntillNextEventMinutes();
-  return currentTime + untillNextEventMinutes * 60000;
+  // add minutes as milli seconds
+  return currentTime + untillNextEventMinutes * 60 * 1000;
 };
