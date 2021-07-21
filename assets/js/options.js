@@ -7,20 +7,24 @@ const handleButtonClick = async () => {
   await chrome.storage.sync.set({ interval: select.value });
 }
 
-const constructOptions = async () => {
+export const getSettingThenExecuteFunc = async func => {
   await chrome.storage.sync.get(
     ['interval'],
     async data => {
       if (!data) {
         // set initial value
         await chrome.storage.sync.set({ interval: initialIntervalMinutes }, data => {
-          setOptionDom(data.interval);
+          func(data.interval);
         });
       } else {
-        setOptionDom(data.interval);
+        func(data.interval);
       }
     },
   );
+};
+
+const constructOptions = async () => {
+  getSettingThenExecuteFunc(setOptionDom);
 
   button.addEventListener("click", handleButtonClick);
 }
