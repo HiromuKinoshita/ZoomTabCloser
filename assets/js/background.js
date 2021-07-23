@@ -7,7 +7,7 @@ const set = interval => {
   chrome.alarms.create('removeTab', {
     periodInMinutes: intervalInt,
     when: time,
-  })
+  });
 };
 
 // getSettingThenExecuteFuncと同じ内容
