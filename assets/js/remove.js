@@ -1,4 +1,4 @@
-import { updateResultText } from './dom'
+import { updateResultText } from './view'
 
 export const removeZoomTabs = async () => {
   const condition = new RegExp(/((https|http):\/\/.*zoom\.us\/.*#success|(https|http):\/\/.*zoom\.us\/postattendee.*)/);
