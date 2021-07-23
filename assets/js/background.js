@@ -2,13 +2,15 @@ import { removeZoomTabs } from './remove';
 import { firstEventUnixTime } from './schedule'
 
 const set = interval => {
-  const time = firstEventUnixTime(interval);
+  const intervalInt =parseInt(interval);
+  const time = firstEventUnixTime(intervalInt);
   chrome.alarms.create('removeTab', {
-    periodInMinutes: interval,
+    periodInMinutes: intervalInt,
     when: time,
   })
 };
 
+// getSettingThenExecuteFuncと同じ内容
 chrome.storage.sync.get(
   ['interval'],
   async data => {
@@ -27,9 +29,9 @@ chrome.alarms.onAlarm.addListener(alarm => {
   removeZoomTabs();
 });
 
-chrome.storage.onChanged.addListener( async (changes) => {
+chrome.storage.onChanged.addListener(async (changes) => {
   await chrome.alarms.clearAll();
   for (let [key, { oldValue, newValue }] of Object.entries(changes)) {
-    set(parseInt(newValue));
+    set(newValue);
   }
 });
