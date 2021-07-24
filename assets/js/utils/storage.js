@@ -13,3 +13,11 @@ export const getIntervalThenExecute = func => {
     },
   );
 };
+
+// interval: int
+export const setInterval = val => {
+  console.log('set interval!!');
+  console.log(val);
+
+  chrome.storage.sync.set({ interval: val });
+};

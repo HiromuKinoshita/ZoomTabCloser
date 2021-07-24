@@ -1,11 +1,11 @@
 import { intervalMinutesOptions, initialIntervalMinutes } from './consts/index'
-import { getIntervalThenExecute } from './utils/storage';
+import { getIntervalThenExecute, setInterval } from './utils/storage';
 
 const button = document.getElementById('buttonSave');
 const select = document.getElementById('selectInterval');
 
 const handleButtonClick = () => {
-  chrome.storage.sync.set({ interval: select.value });
+  setInterval(select.value);
 }
 
 const setOptionDom = currentInterval => {
