@@ -1,4 +1,4 @@
-import { intervalMinutesOptions, initialIntervalMinutes } from './consts/index'
+import { intervalMinutesOptions } from './consts/index'
 import { getIntervalThenExecute, setInterval } from './utils/storage';
 
 const button = document.getElementById('buttonSave');
