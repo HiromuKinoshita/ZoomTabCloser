@@ -14,11 +14,11 @@ const setOptionDom = currentInterval => {
     optionElement.value = option;
     optionElement.innerText = option;
 
-    if (optionElement.value === currentInterval) {
+    select.appendChild(optionElement);
+
+    if (optionElement.value == currentInterval) {
       select.value = optionElement.value;
     }
-
-    select.appendChild(optionElement);
   }
 }
 
