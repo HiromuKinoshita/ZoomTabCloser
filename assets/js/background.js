@@ -15,12 +15,15 @@ const set = async interval => {
 
 getIntervalThenExecute(set);
 
-// TODO: dom関連の処理を外さないとエラー吐くので削る
 chrome.alarms.onAlarm.addListener(alarm => {
   removeZoomTabs();
 });
 
 chrome.storage.onChanged.addListener(async (changes) => {
+  if (!changes.interval) {
+    return;
+  }
+
   for (let [key, { oldValue, newValue }] of Object.entries(changes)) {
     set(newValue);
   }
