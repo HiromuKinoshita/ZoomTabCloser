@@ -13,10 +13,10 @@ const set = interval => {
 // getSettingThenExecuteFuncと同じ内容
 chrome.storage.sync.get(
   ['interval'],
-  async data => {
+  data => {
     if (!data) {
       // set initial value
-      await chrome.storage.sync.set({ interval: initialIntervalMinutes }, data => {
+      chrome.storage.sync.set({ interval: initialIntervalMinutes }, data => {
         set(parseInt(data.interval));
       });
     } else {

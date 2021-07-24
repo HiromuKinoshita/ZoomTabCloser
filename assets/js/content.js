@@ -12,10 +12,10 @@ chrome.management.getSelf(info => {
 // init setting view TODO: 作りを見直す。なぜかimportした時に色々おかしくなっている
 chrome.storage.sync.get(
   ['interval'],
-  async data => {
+  data => {
     if (!data) {
       // set initial value
-      await chrome.storage.sync.set({ interval: initialIntervalMinutes }, data => {
+      chrome.storage.sync.set({ interval: initialIntervalMinutes }, data => {
         updateViewCurrentInterval(data.interval);
       });
     } else {

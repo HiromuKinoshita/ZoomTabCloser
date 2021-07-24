@@ -3,14 +3,8 @@ import { intervalMinutesOptions, initialIntervalMinutes } from './consts/index'
 const button = document.getElementById('buttonSave');
 const select = document.getElementById('selectInterval');
 
-const handleButtonClick = async () => {
-  await chrome.storage.sync.set({ interval: select.value });
-}
-
-const constructOptions = async () => {
-  getSettingThenExecuteFunc(setOptionDom);
-
-  button.addEventListener('click', handleButtonClick);
+const handleButtonClick = () => {
+  chrome.storage.sync.set({ interval: select.value });
 }
 
 const setOptionDom = currentInterval => {
@@ -27,16 +21,13 @@ const setOptionDom = currentInterval => {
   }
 }
 
-// Initialize
-constructOptions(intervalMinutesOptions);
-
-export const getSettingThenExecuteFunc = async func => {
-  await chrome.storage.sync.get(
+export const getSettingThenExecuteFunc = func => {
+  chrome.storage.sync.get(
     ['interval'],
-    async data => {
+    data => {
       if (!data) {
         // set initial value
-        await chrome.storage.sync.set({ interval: initialIntervalMinutes }, data => {
+        chrome.storage.sync.set({ interval: initialIntervalMinutes }, data => {
           func(data.interval);
         });
       } else {
@@ -45,3 +36,12 @@ export const getSettingThenExecuteFunc = async func => {
     },
   );
 };
+
+const constructOptions = () => {
+  getSettingThenExecuteFunc(setOptionDom);
+
+  button.addEventListener('click', handleButtonClick);
+}
+
+// Initialize
+constructOptions(intervalMinutesOptions);
