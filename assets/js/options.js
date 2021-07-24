@@ -1,4 +1,5 @@
 import { intervalMinutesOptions, initialIntervalMinutes } from './consts/index'
+import { getSettingThenExecuteFunc } from './utils/storage';
 
 const button = document.getElementById('buttonSave');
 const select = document.getElementById('selectInterval');
@@ -20,22 +21,6 @@ const setOptionDom = currentInterval => {
     select.appendChild(optionElement);
   }
 }
-
-export const getSettingThenExecuteFunc = func => {
-  chrome.storage.sync.get(
-    ['interval'],
-    data => {
-      if (!data) {
-        // set initial value
-        chrome.storage.sync.set({ interval: initialIntervalMinutes }, data => {
-          func(data.interval);
-        });
-      } else {
-        func(data.interval);
-      }
-    },
-  );
-};
 
 const constructOptions = () => {
   getSettingThenExecuteFunc(setOptionDom);

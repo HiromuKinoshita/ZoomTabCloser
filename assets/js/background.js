@@ -1,5 +1,6 @@
 import { removeZoomTabs } from './utils/remove';
-import { firstEventUnixTime } from './utils/schedule'
+import { firstEventUnixTime } from './utils/schedule';
+import { getSettingThenExecuteFunc } from './utils/storage';
 
 const set = interval => {
   const intervalInt =parseInt(interval);
@@ -10,20 +11,7 @@ const set = interval => {
   });
 };
 
-// getSettingThenExecuteFuncと同じ内容
-chrome.storage.sync.get(
-  ['interval'],
-  data => {
-    if (!data) {
-      // set initial value
-      chrome.storage.sync.set({ interval: initialIntervalMinutes }, data => {
-        set(parseInt(data.interval));
-      });
-    } else {
-      set(parseInt(data.interval));
-    }
-  },
-);
+getSettingThenExecuteFunc(set);
 
 chrome.alarms.onAlarm.addListener(alarm => {
   removeZoomTabs();

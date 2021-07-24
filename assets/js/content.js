@@ -1,5 +1,6 @@
 import { removeZoomTabs } from './utils/remove';
 import { updateViewCurrentInterval } from './utils/view';
+import { getSettingThenExecuteFunc } from './utils/storage';
 
 document.getElementById('buttonRemove').addEventListener('click', removeZoomTabs);
 
@@ -9,20 +10,7 @@ chrome.management.getSelf(info => {
   link.href = `chrome-extension://${info.id}/options.html`;
 });
 
-// init setting view TODO: 作りを見直す。なぜかimportした時に色々おかしくなっている
-chrome.storage.sync.get(
-  ['interval'],
-  data => {
-    if (!data) {
-      // set initial value
-      chrome.storage.sync.set({ interval: initialIntervalMinutes }, data => {
-        updateViewCurrentInterval(data.interval);
-      });
-    } else {
-      updateViewCurrentInterval(data.interval);
-    }
-  },
-);
+getSettingThenExecuteFunc(updateViewCurrentInterval);
 
 // update view on setting is changed
 chrome.storage.onChanged.addListener(changes => {
