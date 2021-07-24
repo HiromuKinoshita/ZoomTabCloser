@@ -1,39 +1,38 @@
-import { initialIntervalMinutes } from '../consts/index'
+/* global chrome */
+import { initialIntervalMinutes } from '../consts/index';
 
-export const getIntervalThenExecute = async func => {
-  await chrome.storage.sync.get(
-    ['interval'],
-    async data => {
-      if (!data.interval) {
-        // set initial value
-        await chrome.storage.sync.set({ interval: initialIntervalMinutes }, data => {
-          if (!data.interval) {
+export const getIntervalThenExecute = async (func) => {
+  // eslint-disable-next-line no-undef
+  await chrome.storage.sync.get(['interval'], async (data) => {
+    if (!data.interval) {
+      // set initial value
+      await chrome.storage.sync.set(
+        { interval: initialIntervalMinutes },
+        (setData) => {
+          if (!setData.interval) {
             throw new Error('interval is not set');
           }
-          func(data.interval);
-        });
-      } else {
-        func(data.interval);
-      }
-    },
-  );
+          func(setData.interval);
+        },
+      );
+    } else {
+      func(data.interval);
+    }
+  });
 };
 
 // interval: int
-export const setInterval = val => {
+export const setInterval = (val) => {
   chrome.storage.sync.set({ interval: val });
 };
 
-export const getResultThenExecute = async func => {
-  await chrome.storage.sync.get(
-    ['result'],
-    data => {
-      if (!data.result) {
-        throw new Error('result is not set');
-      }
-      func(data.result);
-    },
-  );
+export const getResultThenExecute = async (func) => {
+  await chrome.storage.sync.get(['result'], (data) => {
+    if (!data.result) {
+      throw new Error('result is not set');
+    }
+    func(data.result);
+  });
 };
 
 // resulut: { executedAt: unixtime, tabCount: int }

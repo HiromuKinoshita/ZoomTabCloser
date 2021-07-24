@@ -1,11 +1,12 @@
+/* global chrome */
 import { closeZoomTabs } from './utils/close';
 import { firstEventUnixTime } from './utils/schedule';
 import { getIntervalThenExecute } from './utils/storage';
 
-const set = async interval => {
+const set = async (interval) => {
   await chrome.alarms.clearAll();
 
-  const intervalInt = parseInt(interval);
+  const intervalInt = parseInt(interval, 10);
   const time = firstEventUnixTime(intervalInt);
   chrome.alarms.create('closeTab', {
     periodInMinutes: intervalInt,
@@ -15,7 +16,7 @@ const set = async interval => {
 
 getIntervalThenExecute(set);
 
-chrome.alarms.onAlarm.addListener(alarm => {
+chrome.alarms.onAlarm.addListener(() => {
   closeZoomTabs();
 });
 
@@ -24,7 +25,7 @@ chrome.storage.onChanged.addListener(async (changes) => {
     return;
   }
 
-  for (let [key, { oldValue, newValue }] of Object.entries(changes)) {
-    set(newValue);
-  }
+  Object.entries(changes).forEach(change => {
+    set(change.newValue);
+  });
 });

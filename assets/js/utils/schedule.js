@@ -1,4 +1,4 @@
-const getUntillNextEventMinutes = interval => {
+const getUntillNextEventMinutes = (interval) => {
   const currentMinutes = new Date().getMinutes();
   let nextEventMinutes = 0;
 
@@ -9,7 +9,7 @@ const getUntillNextEventMinutes = interval => {
   return nextEventMinutes - currentMinutes;
 };
 
-export const firstEventUnixTime = interval => {
+export const firstEventUnixTime = (interval) => {
   const currentTime = Date.now();
   const untillNextEventMinutes = getUntillNextEventMinutes(interval);
   // add minutes as milli seconds

@@ -1,6 +1,9 @@
+// eslint-disable-next-line no-unused-vars
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { HtmlWebpackSkipAssetsPlugin } = require('html-webpack-skip-assets-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {
+  HtmlWebpackSkipAssetsPlugin,
+} = require('html-webpack-skip-assets-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
@@ -20,7 +23,7 @@ module.exports = {
         use: [
           {
             loader: 'babel-loader',
-          }
+          },
         ],
       },
       {
@@ -32,12 +35,12 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'popup.html',
-      template: "./html/popup.html",
+      template: './html/popup.html',
       excludeAssets: [/options.js/, /background.js/],
     }),
     new HtmlWebpackPlugin({
       filename: 'options.html',
-      template: "./html/options.html",
+      template: './html/options.html',
       excludeAssets: [/content.js/, /background.js/],
     }),
     new HtmlWebpackSkipAssetsPlugin(),
