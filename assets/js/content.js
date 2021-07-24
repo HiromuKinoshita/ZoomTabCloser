@@ -1,6 +1,5 @@
 import { removeZoomTabs } from './utils/remove';
-import { updateViewCurrentInterval } from './utils/view';
-import { getSettingThenExecuteFunc } from './utils/storage';
+import { getIntervalThenExecute } from './utils/storage';
 
 const getResultText = (tabCount) => {
   if (tabCount) {
@@ -31,7 +30,7 @@ chrome.management.getSelf(info => {
   link.href = `chrome-extension://${info.id}/options.html`;
 });
 
-getSettingThenExecuteFunc(updateViewCurrentInterval);
+getIntervalThenExecute(updateViewCurrentInterval);
 
 // update view on setting is changed
 chrome.storage.onChanged.addListener(changes => {

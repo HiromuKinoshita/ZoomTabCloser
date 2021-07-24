@@ -1,5 +1,5 @@
 import { intervalMinutesOptions, initialIntervalMinutes } from './consts/index'
-import { getSettingThenExecuteFunc } from './utils/storage';
+import { getIntervalThenExecute } from './utils/storage';
 
 const button = document.getElementById('buttonSave');
 const select = document.getElementById('selectInterval');
@@ -23,7 +23,7 @@ const setOptionDom = currentInterval => {
 }
 
 const constructOptions = () => {
-  getSettingThenExecuteFunc(setOptionDom);
+  getIntervalThenExecute(setOptionDom);
 
   button.addEventListener('click', handleButtonClick);
 }

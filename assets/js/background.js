@@ -1,6 +1,6 @@
 import { removeZoomTabs } from './utils/remove';
 import { firstEventUnixTime } from './utils/schedule';
-import { getSettingThenExecuteFunc } from './utils/storage';
+import { getIntervalThenExecute } from './utils/storage';
 
 const set = async interval => {
   await chrome.alarms.clearAll();
@@ -13,8 +13,9 @@ const set = async interval => {
   });
 };
 
-getSettingThenExecuteFunc(set);
+getIntervalThenExecute(set);
 
+// TODO: dom関連の処理を外さないとエラー吐くので削る
 chrome.alarms.onAlarm.addListener(alarm => {
   removeZoomTabs();
 });

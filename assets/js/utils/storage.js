@@ -1,4 +1,4 @@
-export const getSettingThenExecuteFunc = func => {
+export const getIntervalThenExecute = func => {
   chrome.storage.sync.get(
     ['interval'],
     data => {
