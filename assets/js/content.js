@@ -1,4 +1,4 @@
-import { removeZoomTabs } from './utils/remove';
+import { closeZoomTabs } from './utils/close';
 import { getIntervalThenExecute, getResultThenExecute } from './utils/storage';
 
 const getResultText = (tabCount) => {
@@ -24,7 +24,7 @@ const updateCurrentIntervalText = interval => {
 };
 
 
-document.getElementById('buttonRemove').addEventListener('click', removeZoomTabs);
+document.getElementById('buttonClose').addEventListener('click', closeZoomTabs);
 
 // set link to option page
 chrome.management.getSelf(info => {

@@ -1,4 +1,4 @@
-import { removeZoomTabs } from './utils/remove';
+import { closeZoomTabs } from './utils/close';
 import { firstEventUnixTime } from './utils/schedule';
 import { getIntervalThenExecute } from './utils/storage';
 
@@ -7,7 +7,7 @@ const set = async interval => {
 
   const intervalInt = parseInt(interval);
   const time = firstEventUnixTime(intervalInt);
-  chrome.alarms.create('removeTab', {
+  chrome.alarms.create('closeTab', {
     periodInMinutes: intervalInt,
     when: time,
   });
@@ -16,7 +16,7 @@ const set = async interval => {
 getIntervalThenExecute(set);
 
 chrome.alarms.onAlarm.addListener(alarm => {
-  removeZoomTabs();
+  closeZoomTabs();
 });
 
 chrome.storage.onChanged.addListener(async (changes) => {
