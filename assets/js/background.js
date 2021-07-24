@@ -1,5 +1,5 @@
-import { removeZoomTabs } from './remove';
-import { firstEventUnixTime } from './schedule'
+import { removeZoomTabs } from './utils/remove';
+import { firstEventUnixTime } from './utils/schedule'
 
 const set = interval => {
   const intervalInt =parseInt(interval);

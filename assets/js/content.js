@@ -1,5 +1,5 @@
-import { removeZoomTabs } from './remove';
-import { updateViewCurrentInterval } from './view';
+import { removeZoomTabs } from './utils/remove';
+import { updateViewCurrentInterval } from './utils/view';
 
 document.getElementById('buttonRemove').addEventListener('click', removeZoomTabs);
 

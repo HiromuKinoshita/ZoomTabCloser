@@ -1,4 +1,4 @@
-import { intervalMinutesOptions, initialIntervalMinutes } from './consts'
+import { intervalMinutesOptions, initialIntervalMinutes } from './consts/index'
 
 const button = document.getElementById('buttonSave');
 const select = document.getElementById('selectInterval');
