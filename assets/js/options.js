@@ -9,7 +9,7 @@ const handleButtonClick = () => {
 };
 
 const setOptionDom = (currentInterval) => {
-  intervalMinutesOptions.forEach(option => {
+  intervalMinutesOptions.forEach((option) => {
     const optionElement = document.createElement('option');
     optionElement.value = option;
     optionElement.innerText = option;

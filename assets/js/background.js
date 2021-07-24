@@ -25,7 +25,7 @@ chrome.storage.onChanged.addListener(async (changes) => {
     return;
   }
 
-  Object.entries(changes).forEach(change => {
+  Object.entries(changes).forEach((change) => {
     set(change.newValue);
   });
 });
