@@ -26,6 +26,10 @@
   margin-bottom: 14px;
 }
 
+.section {
+  margin-bottom: 20px;
+}
+
 .section-heading {
   font-size: 20px;
   font-weight: bold;
@@ -54,4 +58,8 @@
 .button:hover {
   cursor: pointer;
   opacity: 0.8;
+}
+
+.buymeacoffee {
+  width: 200px;
 }
