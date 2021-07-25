@@ -8,8 +8,8 @@ Chrome extension to automatically close google chrome tabs used to launch zoom.
 yarn build
 ```
 
-# Dev
+# Lint
 
 ```
-yarn start
+yarn fix
 ```
