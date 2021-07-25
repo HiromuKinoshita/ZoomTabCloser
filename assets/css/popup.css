@@ -1,0 +1,68 @@
+.body {
+  color: #333;
+  font-size: 14px;
+  line-height: 1.6em;
+  margin: 16px;
+  width: 210px;
+}
+
+.image {
+  /* border-radius: 100px; */
+  height: 48px;
+  margin: 0 auto;
+  width: 48px;
+}
+
+.description {
+  color: #666;
+  font-size: 12px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.button-close {
+  border: 1px solid #2d8cff;
+  border-radius: 100px;
+  color: #2d8cff;
+  font-size: 10px;
+  text-align: center;
+  width: 80px;
+}
+
+.button-close:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.section:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.section-heading {
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+.result-container {
+  margin-bottom: 6px;
+}
+
+.result-text {
+  color: #666;
+}
+
+.result-text-updated {
+  font-weight: bold;
+}
+
+.setting {
+  color: #888;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: center;
+}
+
+.setting:hover {
+  opacity: 0.8;
+}

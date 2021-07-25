@@ -2,28 +2,18 @@
 import { closeZoomTabs } from './utils/close';
 import { getIntervalThenExecute, getResultThenExecute } from './utils/storage';
 
-const getResultText = (tabCount) => {
-  if (tabCount) {
-    const tab = tabCount > 1 ? `${tabCount} tabs are` : '1 tab is';
-    return `${tab} closed.`;
-  }
-  return `No tabs are closed.`;
-};
-
 const updateResultText = (result) => {
   const { executedAt, tabCount } = result;
   const executedTime = document.getElementById('executedTime');
   const el = document.getElementById('result');
 
-  executedTime.innerText = `Executed at  ${new Date(executedAt)
-    .toTimeString()
-    .slice(0, 5)}.`;
-  el.innerText = getResultText(tabCount);
+  executedTime.innerText = new Date(executedAt).toTimeString().slice(0, 5);
+  el.innerText = tabCount;
 };
 
 const updateCurrentIntervalText = (interval) => {
   const el = document.getElementById('currentInterval');
-  el.innerText = `Close zoom tab every ${interval} minutes now.`;
+  el.innerText = `Every ${interval} minutes.`;
 };
 
 document.getElementById('buttonClose').addEventListener('click', closeZoomTabs);
