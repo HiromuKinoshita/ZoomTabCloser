@@ -16,7 +16,10 @@ const updateCurrentIntervalText = (interval) => {
   el.innerText = `Every ${interval} minutes.`;
 };
 
-document.getElementById('buttonClose').addEventListener('click', closeZoomTabs);
+document.getElementById('buttonClose').addEventListener('click', async () => {
+  await closeZoomTabs();
+  getResultThenExecute(updateResultText);
+});
 
 // set link to option page
 chrome.management.getSelf((info) => {
