@@ -10,7 +10,7 @@ export const closeZoomTabs = async () => {
   });
   const queriedTabs = tabs.filter((tab) => condition.test(tab.url));
   queriedTabs.forEach((tab) => {
-    chrome.tabs.close(tab.id);
+    chrome.tabs.remove(tab.id);
   });
 
   setResult(Date.now(), queriedTabs.length);
