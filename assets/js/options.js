@@ -5,7 +5,14 @@ const button = document.getElementById('buttonSave');
 const select = document.getElementById('selectInterval');
 
 const handleButtonClick = () => {
+  button.disabled = true;
+  button.innerText = 'Saving...';
   setInterval(select.value);
+  button.innerText = 'Saved!';
+  window.setTimeout(() => {
+    button.disabled = false;
+    button.innerText = 'Save setting';
+  }, 1000);
 };
 
 const setOptionDom = (currentInterval) => {
