@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="../assets/css/button.css" />
+    <meta charset="utf-8" />
+    <title>Options - Zoom Tab Closer</title>
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="../assets/css/options.css" />
   </head>
 
-  <body>
-    <h1>ZoomTabCloser</h1>
-    <section>
-      <h2>Setting</h2>
-      <div>
-        <p>Please choose how often close used zoom tabs.</p>
-        <div>
-          <p>
-            Every
-            <select id="selectInterval"></select>
-            minutes.
-          </p>
-          <button id="buttonSave">Save setting</button>
-        </div>
-      </div>
-    </section>
+  <body class="body">
+    <main>
+      <h1 class="heading">
+        <span class="heading-text">Zoom Tab Closer</span>
+        <img class="image" src="../assets/images/zoomninja48.png" alt="Zoom Tab Closer" />
+      </h1>
+      <p class="description">Close used zoom tabs automatically.</p>
+      <section>
+        <h2 class="section-heading">Setting</h2>
+        <p class="section-description">Please choose how often close used zoom tabs.</p>
+        <p class="option-text">
+          Every
+          <select id="selectInterval"></select>
+          minutes.
+        </p>
+        <button id="buttonSave" class="button">Save setting</button>
+      </section>
+    </main>
   </body>
 </html>
